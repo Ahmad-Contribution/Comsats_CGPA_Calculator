@@ -1,0 +1,332 @@
+#####################################################################################################
+def CGPA_Calculator():
+
+    print()
+    semesters = int(input("How many semesters GPA do you want to calculate : "))
+    totalSGPA = [float(input(f"Enter SGPA of {i+1} semester : ")) for i in range(semesters)]
+
+    CGPA = sum(totalSGPA) / semesters
+    print(f"Your CGPA is--- {round(CGPA, 2)}---")
+#####################################################################################################
+#####################################################################################################
+def SGPA_Calculator():
+
+    print()
+    subjects = int(input("How many subjects do you have : "))
+    credithours = [int(input(f"Enter total credit hours of {i+1} subject-- : ")) for i in range(subjects)]
+    print()
+    obtainedcredits = [float(input(f"Enter obtained credits of {i+1} subject---- : ")) for i in range(subjects)]
+
+    totalCreditHours = sum(credithours)
+    weightedTotalObtainedCredits = sum([credithours[i] * obtainedcredits[i] for i in range(subjects)])
+    SGPA = weightedTotalObtainedCredits / totalCreditHours
+    print(f"Your SGPA is--- {round(SGPA, 2)}---")
+#####################################################################################################    
+#####################################################################################################    
+def calculate_weighted_average(total_marks, obtained_marks, weightage):
+    sum = 0
+    for i in range(len(total_marks)):
+        sum += (obtained_marks[i] / total_marks[i])
+    return (sum / len(total_marks)) * weightage
+#####################################################################################################    
+#####################################################################################################    
+def Course_GPA_Calculator_Without_Lab():
+
+    print()
+    print("Enter Course Marks")
+    print()
+    Assignments = int(input("How many Assignments conducted : "))
+    TAssignments = [int(input(f"Enter Total marks of {i+1} Assignment-----: ")) for i in range(Assignments)]
+    OAssignments = [float(input(f"Enter Obtained marks of {i+1} Assignment--: ")) for i in range(Assignments)]
+    weightedAssignments = calculate_weighted_average(TAssignments, OAssignments, 0.10)
+    print()
+    Quizes = int(input("How many Quizes conducted : "))
+    TQuizes = [int(input(f"Enter Total marks of {i+1} Quize-----: ")) for i in range(Quizes)]
+    OQuizes = [float(input(f"Enter Obtained marks of {i+1} Quize--: ")) for i in range(Quizes)]
+    weightedQuizes = calculate_weighted_average(TQuizes, OQuizes, 0.15)
+    print()
+    TMids = int(input("Enter Total Mids Marks----- : "))
+    OMids = float(input("Enter Obtained Mids Marks-- : "))
+    AMids = OMids / TMids
+    print()
+    TFinals = int(input("Enter Total Finals Marks----- : "))
+    OFinals = float(input("Enter Obtained Finals Marks-- : "))
+    AFinals = OFinals / TFinals
+
+    weightedMids = AMids * 0.25
+    weightedFinals = AFinals * 0.50
+
+    overallGPA = weightedAssignments + weightedQuizes + weightedMids + weightedFinals
+    print()
+    print(f"Weighted Assignments Marks-- : {round(weightedAssignments*100, 2)}")
+    print(f"Weighted Quizes Marks------- : {round(weightedQuizes*100, 2)}")
+    print(f"Weighted Mids Marks--------- : {round(weightedMids*100, 2)}")
+    print(f"Weighted Finals Marks------- : {round(weightedFinals*100, 2)}")
+    print(f"Overall GPA in Course--- {round(overallGPA*100, 2)}---")
+#####################################################################################################    
+#####################################################################################################
+def Course_GPA_Calculator_With_Lab():
+
+    print()
+    print("Enter Theory Marks")
+    print()
+    Assignments = int(input("How many Assignments conducted : "))
+    TAssignments = [int(input(f"Enter Total marks of {i+1} Assignment-----: ")) for i in range(Assignments)]
+    OAssignments = [float(input(f"Enter Obtained marks of {i+1} Assignment--: ")) for i in range(Assignments)]
+    weightedAssignments = calculate_weighted_average(TAssignments, OAssignments, 0.10)
+    print()
+    Quizes = int(input("How many Quizes conducted : "))
+    TQuizes = [int(input(f"Enter Total marks of {i+1} Quize-----: ")) for i in range(Quizes)]
+    OQuizes = [float(input(f"Enter Obtained marks of {i+1} Quize--: ")) for i in range(Quizes)]
+    weightedQuizes = calculate_weighted_average(TQuizes, OQuizes, 0.15)
+    print()
+    TMids = int(input("Enter Total Mids Marks----- : "))
+    OMids = float(input("Enter Obtained Mids Marks-- : "))
+    AMids = OMids / TMids
+    print()
+    TFinals = int(input("Enter Total Finals Marks----- : "))
+    OFinals = float(input("Enter Obtained Finals Marks-- : "))
+    AFinals = OFinals / TFinals
+
+    weightedMids = AMids * 0.25
+    weightedFinals = AFinals * 0.50
+    CourseoverallGPA = weightedAssignments + weightedQuizes + weightedMids + weightedFinals
+    print()
+    print(f"Weighted Assignments Marks---: {round(weightedAssignments, 2) * 100}")
+    print(f"Weighted Quizes Marks--------: {round(weightedQuizes, 2) * 100}")
+    print(f"Weighted Mids Marks----------: {round(weightedMids, 2) * 100}")
+    print(f"Weighted Finals Marks--------: {round(weightedFinals, 2) * 100}")
+    print(f"Overall GPA in Theory--------: {round(CourseoverallGPA, 2) * 100}")
+
+    print()
+    print("Enter Lab Marks")
+    print()
+    LAssignments = int(input("How many Assignments conducted : "))
+    LTAssignments = [int(input(f"Enter Total marks of {i+1} Assignment-----: ")) for i in range(LAssignments)]
+    LOAssignments = [float(input(f"Enter Obtained marks of {i+1} Assignment--: ")) for i in range(LAssignments)]
+    LweightedAssignments = calculate_weighted_average(LTAssignments, LOAssignments, 0.25)
+    print()
+    LTMids = int(input("Enter Total Mids Marks----- : "))
+    LOMids = float(input("Enter Obtained Mids Marks-- : "))
+    LAMids = LOMids / LTMids
+    print()
+    LTFinals = int(input("Enter Total Finals Marks----- : "))
+    LOFinals = float(input("Enter Obtained Finals Marks-- : "))
+    LAFinals = LOFinals / LTFinals
+
+    LweightedMids = LAMids * 0.25
+    LweightedFinals = LAFinals * 0.50
+    LaboverallGPA = LweightedAssignments + LweightedMids + LweightedFinals
+    print()
+    print(f"Weighted Assignments Marks---: {round(LweightedAssignments, 2) * 100}")
+    print(f"Weighted Mids Marks----------: {round(LweightedMids, 2) * 100}")
+    print(f"Weighted Finals Marks--------: {round(LweightedFinals, 2) * 100}")
+    print(f"Overall GPA in Lab-----------: {round(LaboverallGPA, 2) * 100}")
+    print()
+    mainCourseWeight = 0.75
+    labWeight = 0.25
+    weightedOverallGPA = (mainCourseWeight * CourseoverallGPA) + (labWeight * LaboverallGPA)
+    print(f"Weighted Overall GPA of Course--- {round_value(weightedOverallGPA, 2)*100}---")    
+#####################################################################################################    
+#####################################################################################################
+def Marks_Grade_Calculator():
+    value = float(input("Enter your Course Marks: "))
+
+    if 85 <= value <= 100:
+        print("Your Grade is A")
+        print("Your GPA is 4")
+    elif 80 <= value <= 84:
+        print("Your Grade is A-")
+        print("Your GPA is 3.66")
+    elif 75 <= value <= 79:
+        print("Your Grade is B+")
+        print("Your GPA is 3.33")
+    elif 71 <= value <= 74:
+        print("Your Grade is B")
+        print("Your GPA is 3")
+    elif 68 <= value <= 70:
+        print("Your Grade is B-")
+        print("Your  GPA  is 2.66")
+    elif 64 <= value <= 67:
+        print("Your Grade is C+")
+        print("Your  GPA  is 2.33")
+    elif 61 <= value <= 63:
+        print("Your Grade is C")
+        print("Your  GPA  is 2")
+    elif 58 <= value <= 60:
+        print("Your Grade is C-")
+        print("Your  GPA  is 1.66")
+    elif 54 <= value <= 57:
+        print("Your Grade is D+")
+        print("Your  GPA  is 1.30")
+    elif 50 <= value <= 53:
+        print("Your Grade is D")
+        print("Your  GPA  is 1")
+    elif value < 50:
+        print("Your Grade is F")
+        print("Your  GPA  is 0")
+    else:
+        print("Wrong Input")
+#####################################################################################################        
+#####################################################################################################
+def GPA_Grade_Calculator():
+    value = float(input("Enter your GPA: "))
+
+    if 3.67 <= value <= 4:
+        print("Your Grade is A")
+    elif 3.34 <= value <= 3.66:
+        print("Your Grade is A-")
+    elif 3.01 <= value <= 3.33:
+        print("Your Grade is B+")
+    elif 2.67 <= value <= 3.00:
+        print("Your Grade is B")
+    elif 2.34 <= value <= 2.66:
+        print("Your Grade is B-")
+    elif 2.01 <= value <= 2.33:
+        print("Your Grade is C+")
+    elif 1.67 <= value <= 2.00:
+        print("Your Grade is C")
+    elif 1.31 <= value <= 1.66:
+        print("Your Grade is C-")
+    elif 1.01 <= value <= 1.30:
+        print("Your Grade is D+")
+    elif 0.10 <= value <= 1.00:
+        print("Your Grade is D")
+    elif value < 0.10:
+        print("Your Grade is F")
+    else:
+        print("Wrong Input")
+#####################################################################################################
+#####################################################################################################
+def round_value(value, decimal_places):
+    return round(value, decimal_places)
+#####################################################################################################
+#####################################################################################################
+def Known_Without_Lab():
+
+    print()
+    print("Enter Course Marks")
+    print()
+    ta = float(input("Total Assignment-----: "))
+    oa = float(input("Obtained Assignment--: "))
+    tq = float(input("Total Quizzes--------: "))
+    oq = float(input("Obtained Quizzes-----: "))
+    tm = float(input("Total Mids-----------: "))
+    om = float(input("Obtained Mids--------: "))
+    tf = float(input("Total Finals---------: "))
+    of = float(input("Obtained Finals------: "))
+
+    weightedAssignments = (oa / ta) * 0.10
+    weightedQuizzes = (oq / tq) * 0.15
+    weightedMids = (om / tm) * 0.25
+    weightedFinals = (of / tf) * 0.50
+
+    CourseoverallGPA = (weightedAssignments + weightedQuizzes + weightedMids + weightedFinals)
+    print()
+    print(f"Weighted Assignments Marks---: {round_value(weightedAssignments*100, 2)}")
+    print(f"Weighted Quizzes Marks-------: {round_value(weightedQuizzes*100, 2)}")
+    print(f"Weighted Mids Marks----------: {round_value(weightedMids*100, 2)}")
+    print(f"Weighted Finals Marks--------: {round_value(weightedFinals*100, 2)}")
+    print(f"Overall GPA in Course--- {round(CourseoverallGPA, 2)*100}---")
+#####################################################################################################
+#####################################################################################################    
+def Known_With_Lab():
+    
+    print()
+    print("Enter Theory Marks")
+    print()
+    ta = float(input("Total Assignment-----: "))
+    oa = float(input("Obtained Assignment--: "))
+    tq = float(input("Total Quizzes--------: "))
+    oq = float(input("Obtained Quizzes-----: "))
+    tm = float(input("Total Mids-----------: "))
+    om = float(input("Obtained Mids--------: "))
+    tf = float(input("Total Finals---------: "))
+    of = float(input("Obtained Finals------: "))
+
+    weightedAssignments = (oa / ta) * 0.10
+    weightedQuizzes = (oq / tq) * 0.15
+    weightedMids = (om / tm) * 0.25
+    weightedFinals = (of / tf) * 0.50
+
+    CourseoverallGPA = (weightedAssignments + weightedQuizzes + weightedMids + weightedFinals)
+    print()
+    print(f"Weighted Assignments Marks---: {round_value(weightedAssignments*100, 2)}")
+    print(f"Weighted Quizzes Marks-------: {round_value(weightedQuizzes*100, 2)}")
+    print(f"Weighted Mids Marks----------: {round_value(weightedMids*100, 2)}")
+    print(f"Weighted Finals Marks--------: {round_value(weightedFinals*100, 2)}")
+    print(f"Overall GPA of Theory--------: {round_value(CourseoverallGPA*100, 2)}")
+    print()
+
+    print("Enter Lab Marks")
+    print()
+    lta = float(input("Lab Total Assignment-----: "))
+    loa = float(input("Lab Obtained Assignment--: "))
+    ltm = float(input("Lab Total Mids-----------: "))
+    lom = float(input("Lab Obtained Mids--------: "))
+    ltf = float(input("Lab Total Finals---------: "))
+    lof = float(input("Lab Obtained Finals------: "))
+
+    LabweightedAssignments = (loa / lta) * 0.25
+    LabweightedMids = (lom / ltm) * 0.25
+    LabweightedFinals=(lof/ltf) * 0.50
+
+    LaboverallGPA = (LabweightedAssignments + LabweightedMids + LabweightedFinals)
+    print()
+    print(f"Weighted Assignments Marks---: {round_value(LabweightedAssignments*100, 2)}")
+    print(f"Weighted Mids Marks----------: {round_value(LabweightedMids*100, 2)}")
+    print(f"Weighted Finals Marks--------: {round_value(LabweightedFinals*100, 2)}")
+    print(f"Overall GPA of Lab-----------: {round_value(LaboverallGPA*100, 2)}")
+    print()
+
+    mainCourseWeight = 0.75
+    labWeight = 0.25
+    weightedOverallGPA = (mainCourseWeight * CourseoverallGPA) + (labWeight * LaboverallGPA)
+    print(f"Weighted Overall GPA of Course--- {round_value(weightedOverallGPA, 2)*100}---")
+#####################################################################################################    
+#####################################################################################################
+#####################################################################################################
+#####################################################################################################
+#####################################################################################################
+if __name__ == "__main__":
+    while True:
+        print()
+        print("==============================================")
+        print("Welcome to the GPA Calculator")
+        print("Press 1 for CGPA Calculator")
+        print("Press 2 for SGPA Calculator")
+        print("Press 3 for Course without Lab Calculator")
+        print("Press 4 for Course with Lab Calculator")
+        print("Press 5 for Marks Grade Calculator")
+        print("Press 6 for GPA Grade Calculator")
+        print("Press 7 for Known Marks without lab Calculator")
+        print("Press 8 for Known Marks with lab Calculator")
+        print("Press 9 for EXIT")
+        print("==============================================")
+        choice = input("Enter your choice: ")
+        if choice == '1':
+            CGPA_Calculator()
+        elif choice == '2':
+            SGPA_Calculator()
+        elif choice == '3':
+            Course_GPA_Calculator_Without_Lab()
+        elif choice == '4':
+            Course_GPA_Calculator_With_Lab()
+        elif choice == '5':
+            Marks_Grade_Calculator()
+        elif choice == '6':
+            GPA_Grade_Calculator()
+        elif choice == '7':
+            Known_Without_Lab()
+        elif choice == '8':
+            Known_With_Lab()    
+        elif choice == '9':
+            exit(0)
+        else:
+            print("!!!---Wrong Input---!!!")
+            print("Please Try Again")
+#####################################################################################################            
+#####################################################################################################
+#####################################################################################################
+#####################################################################################################
+#####################################################################################################
